@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useColorScheme, useTheme } from "@mui/material";
 
 import {
   Box,
   SideBar,
-  Button,
   faEnvelope,
   faInbox,
   Typography,
@@ -12,15 +12,37 @@ import {
   Icon,
   faGears,
   faGear,
+  faSun,
+  faMoon,
+  Switch,
 } from "@/common/components/components";
 
 import { Header } from "./components/header";
 
 const Home: React.FC = () => {
+  const theme = useTheme();
+
   const [open, setOpen] = useState(false);
+  const [checkedTheme, setCheckedTheme] = useState(
+    theme.palette.mode == "dark"
+  );
+
+  useEffect(() => {
+    setCheckedTheme(theme.palette.mode == "dark");
+  }, [theme.palette.mode]);
+
+  const { mode, setMode } = useColorScheme();
+  if (!mode) {
+    return null;
+  }
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
+  };
+
+  const handleChangeTheme = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setCheckedTheme(event.target.checked);
+    setMode(event.target.checked ? "dark" : "light");
   };
 
   return (
@@ -35,10 +57,18 @@ const Home: React.FC = () => {
           { label: "settings", icon: faEnvelope, navigateTo: "/settings" },
         ]}
         footer={
-          <Box sx={{ padding: 2 }}>
-            <Button variant="contained" color="primary" fullWidth>
-              Footer Button
-            </Button>
+          <Box
+            sx={{
+              padding: 2,
+              display: "flex",
+              gap: 1,
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <Icon icon={faSun} />
+            <Switch checked={checkedTheme} onChange={handleChangeTheme} />
+            <Icon icon={faMoon} />
           </Box>
         }
       />

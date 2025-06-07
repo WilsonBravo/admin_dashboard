@@ -7,5 +7,7 @@ export {
   faUser,
   faGears,
   faGear,
+  faSun,
+  faMoon,
 } from "@fortawesome/free-solid-svg-icons";
 export { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";

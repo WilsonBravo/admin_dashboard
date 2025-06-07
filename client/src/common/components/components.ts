@@ -28,6 +28,8 @@ export {
   faUser,
   faGears,
   faGear,
+  faSun,
+  faMoon,
 } from "./icon/icon";
 
 export { RouterProvider } from "./router-provider/router-provider";
