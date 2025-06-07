@@ -30,6 +30,12 @@ export {
   faGear,
   faSun,
   faMoon,
+  faBox,
+  faChartBar,
+  faCog,
+  faTags,
+  faComment,
+  faImage,
 } from "./icon/icon";
 
 export { RouterProvider } from "./router-provider/router-provider";

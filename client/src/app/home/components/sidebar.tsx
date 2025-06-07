@@ -6,11 +6,10 @@ import {
   Box,
   Switch,
   Icon,
-  faEnvelope,
-  faInbox,
   faSun,
   faMoon,
 } from "@/common/components/components";
+import { dashboard } from "@/common/constants/constants";
 
 type Properties = {
   open: boolean;
@@ -38,15 +37,17 @@ const SideBar: React.FC<Properties> = ({ open, toggleDrawer }) => {
     setMode(event.target.checked ? "dark" : "light");
   };
 
+  const drawerList = dashboard.sections.map((section) => ({
+    label: section.title.toLowerCase(),
+    icon: section.icon,
+    navigateTo: section.navigateTo,
+  }));
+
   return (
     <SideBarLib
       open={open}
       toggleDrawer={toggleDrawer}
-      drawerList={[
-        { label: "users", icon: faEnvelope, navigateTo: "/users" },
-        { label: "messages", icon: faInbox, navigateTo: "/messages" },
-        { label: "settings", icon: faEnvelope, navigateTo: "/settings" },
-      ]}
+      drawerList={drawerList}
       footer={
         <Box
           sx={{
