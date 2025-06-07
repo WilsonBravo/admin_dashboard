@@ -15,7 +15,12 @@ import { Icon } from "../icon/icon";
 type Properties = {
   open: boolean;
   toggleDrawer: (newOpen: boolean) => void;
-  drawerList: { label: string; icon: IconDefinition; navigateTo: string }[];
+  drawerList: {
+    label: string;
+    icon: IconDefinition;
+    navigateTo: string;
+    disabled: boolean;
+  }[];
   header?: React.ReactNode;
   footer?: React.ReactNode;
 };
@@ -34,9 +39,9 @@ const SideBar: React.FC<Properties> = ({
       onClick={() => toggleDrawer(false)}
     >
       <List>
-        {drawerList.map(({ label, icon }, index) => (
+        {drawerList.map(({ label, icon, disabled }, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton>
+            <ListItemButton disabled={disabled}>
               <ListItemIcon>
                 <Icon icon={icon} />
               </ListItemIcon>

@@ -41,6 +41,7 @@ const SideBar: React.FC<Properties> = ({ open, toggleDrawer }) => {
     label: section.title.toLowerCase(),
     icon: section.icon,
     navigateTo: section.navigateTo,
+    disabled: section.disabled,
   }));
 
   return (
