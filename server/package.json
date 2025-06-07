@@ -1,0 +1,74 @@
+{
+  "name": "admin_dashboard",
+  "version": "1.0.0",
+  "type": "module",
+  "keywords": [
+    "typescript",
+    "nestjs"
+  ],
+  "engines": {
+    "node": ">=22.x",
+    "pnpm": ">=9.x"
+  },
+  "packageManager": "pnpm@10.11.1",
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "node --run build:clean && nest build --path tsconfig.prod.json",
+    "start": "node dist/main.js",
+    "dev": "nest start --watch --debug=0.0.0.0:9229",
+    "lint": "eslint --ignore-path .gitignore . --ext .js,.mjs,cjs,.ts,.mts",
+    "lint:fix": "eslint --ignore-path .gitignore . --ext .js,.mjs,cjs,.ts,.mts --fix",
+    "lint:file": "eslint --ignore-path .gitignore"
+  },
+  "dependencies": {
+    "@fastify/static": "^8.2.0",
+    "@nestjs/cli": "^11.0.7",
+    "@nestjs/common": "^11.1.2",
+    "@nestjs/config": "^4.0.2",
+    "@nestjs/core": "^11.1.2",
+    "@nestjs/platform-fastify": "^11.1.2",
+    "@nestjs/serve-static": "^5.0.3",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "server": "^0.0.3"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "@commitlint/types": "^19.8.1",
+    "@nestjs/schematics": "^11.0.5",
+    "@nestjs/testing": "^11.1.2",
+    "@swc/cli": "^0.7.7",
+    "@swc/core": "^1.11.31",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^22.15.30",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
+    "@vitest/coverage-istanbul": "^3.2.2",
+    "concurrently": "^9.1.2",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.4.1",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "eslint-plugin-unicorn": "^59.0.1",
+    "eslint-plugin-vitest": "^0.5.4",
+    "fs-extra": "^11.3.0",
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "source-map-support": "^0.5.21",
+    "ts-loader": "^9.5.2",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3",
+    "unplugin-swc": "^1.5.4",
+    "vite": "^6.3.5"
+  },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "^4.41.1",
+    "@swc/core-linux-arm64-musl": "^1.11.31",
+    "@swc/core-linux-x64-gnu": "^1.11.31",
+    "@swc/core-linux-x64-musl": "^1.11.31"
+  }
+}
