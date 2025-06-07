@@ -51,6 +51,7 @@ const Home: React.FC = () => {
               icon={section.icon}
               title={section.title}
               description={section.description}
+              disabled={section.disabled}
             />
           ))}
         </Box>

@@ -5,7 +5,7 @@ type DashboardSection = {
   description: string;
   icon: IconDefinition;
   navigateTo: string;
-  enabled: boolean;
+  disabled: boolean;
 };
 
 export { type DashboardSection };

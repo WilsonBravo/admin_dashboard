@@ -15,9 +15,15 @@ type Properties = {
   icon: IconDefinition;
   title: string;
   description: string;
+  disabled: boolean;
 };
 
-const InfoCard: React.FC<Properties> = ({ icon, title, description }) => {
+const InfoCard: React.FC<Properties> = ({
+  icon,
+  title,
+  description,
+  disabled,
+}) => {
   return (
     <Card sx={{ padding: 2, width: 300, height: 220 }}>
       <CardContent
@@ -38,7 +44,9 @@ const InfoCard: React.FC<Properties> = ({ icon, title, description }) => {
         <Typography>{description}</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">See More {">"}</Button>
+        <Button size="small" disabled={disabled}>
+          See More {">"}
+        </Button>
       </CardActions>
     </Card>
   );
