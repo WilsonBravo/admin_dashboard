@@ -1,77 +1,28 @@
-import React, { useEffect, useState } from "react";
-import { useColorScheme, useTheme } from "@mui/material";
+import React, { useState } from "react";
 
 import {
   Box,
-  SideBar,
-  faEnvelope,
-  faInbox,
   Typography,
   InfoCard,
-  faUser,
   Icon,
   faGears,
-  faGear,
-  faSun,
-  faMoon,
-  Switch,
 } from "@/common/components/components";
+import { dashboard } from "@/common/constants/constants";
 
 import { Header } from "./components/header";
+import { SideBar } from "./components/sidebar";
 
 const Home: React.FC = () => {
-  const theme = useTheme();
-
   const [open, setOpen] = useState(false);
-  const [checkedTheme, setCheckedTheme] = useState(
-    theme.palette.mode == "dark"
-  );
 
-  useEffect(() => {
-    setCheckedTheme(theme.palette.mode == "dark");
-  }, [theme.palette.mode]);
-
-  const { mode, setMode } = useColorScheme();
-  if (!mode) {
-    return null;
-  }
-
-  const toggleDrawer = (newOpen: boolean) => () => {
+  const toggleDrawer = (newOpen: boolean) => {
     setOpen(newOpen);
-  };
-
-  const handleChangeTheme = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setCheckedTheme(event.target.checked);
-    setMode(event.target.checked ? "dark" : "light");
   };
 
   return (
     <Box>
-      <Header toggleDrawer={toggleDrawer(true)} />
-      <SideBar
-        open={open}
-        toggleDrawer={toggleDrawer}
-        drawerList={[
-          { label: "users", icon: faEnvelope, navigateTo: "/users" },
-          { label: "messages", icon: faInbox, navigateTo: "/messages" },
-          { label: "settings", icon: faEnvelope, navigateTo: "/settings" },
-        ]}
-        footer={
-          <Box
-            sx={{
-              padding: 2,
-              display: "flex",
-              gap: 1,
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
-            <Icon icon={faSun} />
-            <Switch checked={checkedTheme} onChange={handleChangeTheme} />
-            <Icon icon={faMoon} />
-          </Box>
-        }
-      />
+      <Header toggleDrawer={() => toggleDrawer(true)} />
+      <SideBar open={open} toggleDrawer={toggleDrawer} />
       <Box
         sx={{
           display: "flex",
@@ -94,36 +45,14 @@ const Home: React.FC = () => {
             justifyContent: "center",
           }}
         >
-          <InfoCard
-            icon={faUser}
-            title="Users"
-            description="manage your users and their permissions"
-          />
-          <InfoCard
-            icon={faEnvelope}
-            title="Users"
-            description="manage your users and their permissions"
-          />
-          <InfoCard
-            icon={faGear}
-            title="Users"
-            description="manage your users and their permissions"
-          />
-          <InfoCard
-            icon={faInbox}
-            title="Users"
-            description="manage your users and their permissions"
-          />
-          <InfoCard
-            icon={faInbox}
-            title="Users"
-            description="manage your users and their permissions"
-          />
-          <InfoCard
-            icon={faInbox}
-            title="Users"
-            description="manage your users and their permissions"
-          />
+          {dashboard.sections.map((section, index) => (
+            <InfoCard
+              key={index}
+              icon={section.icon}
+              title={section.title}
+              description={section.description}
+            />
+          ))}
         </Box>
       </Box>
     </Box>

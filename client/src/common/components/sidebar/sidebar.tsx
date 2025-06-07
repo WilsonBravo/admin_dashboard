@@ -14,7 +14,7 @@ import { Icon } from "../icon/icon";
 
 type Properties = {
   open: boolean;
-  toggleDrawer: (newOpen: boolean) => () => void;
+  toggleDrawer: (newOpen: boolean) => void;
   drawerList: { label: string; icon: IconDefinition; navigateTo: string }[];
   header?: React.ReactNode;
   footer?: React.ReactNode;
@@ -28,7 +28,11 @@ const SideBar: React.FC<Properties> = ({
   footer,
 }) => {
   const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+    <Box
+      sx={{ width: 250 }}
+      role="presentation"
+      onClick={() => toggleDrawer(false)}
+    >
       <List>
         {drawerList.map(({ label, icon }, index) => (
           <ListItem key={index} disablePadding>
@@ -48,7 +52,7 @@ const SideBar: React.FC<Properties> = ({
     <Drawer
       sx={{ display: "flex", flexDirection: "column" }}
       open={open}
-      onClose={toggleDrawer(false)}
+      onClose={() => toggleDrawer(false)}
     >
       {header && <Box>{header}</Box>}
       {DrawerList}
