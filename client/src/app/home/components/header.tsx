@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 import {
   Box,
@@ -9,18 +10,21 @@ import {
   faSignOut,
 } from "@/common/components/components";
 import { images } from "@/common/constants/images.constant";
+import { AppRoute } from "@/common/enums/enums";
 
 type Properties = {
   toggleDrawer: (newOpen: boolean) => void;
 };
 
 const Header: React.FC<Properties> = ({ toggleDrawer }) => {
+  const navigate = useNavigate();
+
   const Start = (
     <Box>
       <IconButton onClick={() => toggleDrawer(true)}>
         <Icon icon={faBars} />
       </IconButton>
-      <IconButton>
+      <IconButton onClick={() => navigate(AppRoute.ROOT)}>
         <Box
           sx={{
             width: 40,
@@ -35,7 +39,7 @@ const Header: React.FC<Properties> = ({ toggleDrawer }) => {
           <img alt="logo" src={images.logo} />
         </Box>
       </IconButton>
-      <IconButton>
+      <IconButton onClick={() => navigate(AppRoute.ROOT)}>
         <Box
           sx={{
             width: 40,
