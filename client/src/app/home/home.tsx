@@ -40,6 +40,7 @@ const Home: React.FC = () => {
             title={section.title}
             description={section.description}
             disabled={section.disabled}
+            navigateTo={section.navigateTo}
           />
         ))}
       </Box>

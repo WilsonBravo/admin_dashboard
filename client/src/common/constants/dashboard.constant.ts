@@ -7,7 +7,9 @@ import {
   faComment,
   faImage,
 } from "@/common/components/components";
+
 import type { DashboardSection } from "../types/types";
+import { AppRoute } from "../enums/enums";
 
 export const dashboard: { sections: DashboardSection[] } = {
   sections: [
@@ -15,49 +17,49 @@ export const dashboard: { sections: DashboardSection[] } = {
       title: "Users",
       description: "Manage registered users, roles and permissions.",
       icon: faUser,
-      navigateTo: "/users",
+      navigateTo: AppRoute.USERS,
       disabled: false,
     },
     {
       title: "Items",
       description: "View and edit the items in your inventory or catalog.",
       icon: faBox,
-      navigateTo: "/items",
+      navigateTo: AppRoute.ANY,
       disabled: true,
     },
     {
       title: "Analytics",
       description: "Track traffic, usage, and performance metrics.",
       icon: faChartBar,
-      navigateTo: "/analytics",
+      navigateTo: AppRoute.ANY,
       disabled: true,
     },
     {
       title: "Media",
       description: "Upload and manage images, videos and files.",
       icon: faImage,
-      navigateTo: "/media",
+      navigateTo: AppRoute.ANY,
       disabled: true,
     },
     {
       title: "Tags",
       description: "Organize content with tags and categories.",
       icon: faTags,
-      navigateTo: "/tags",
+      navigateTo: AppRoute.ANY,
       disabled: true,
     },
     {
       title: "Comments",
       description: "Moderate user comments and feedback.",
       icon: faComment,
-      navigateTo: "/comments",
+      navigateTo: AppRoute.ANY,
       disabled: true,
     },
     {
       title: "Settings",
       description: "Update panel preferences and application settings.",
       icon: faCog,
-      navigateTo: "/settings",
+      navigateTo: AppRoute.ANY,
       disabled: true,
     },
   ],

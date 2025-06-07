@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { type IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 import {
@@ -16,6 +17,7 @@ type Properties = {
   title: string;
   description: string;
   disabled: boolean;
+  navigateTo: string;
 };
 
 const InfoCard: React.FC<Properties> = ({
@@ -23,7 +25,10 @@ const InfoCard: React.FC<Properties> = ({
   title,
   description,
   disabled,
+  navigateTo,
 }) => {
+  const navigate = useNavigate();
+
   return (
     <Card sx={{ padding: 2, width: 300, height: 220 }}>
       <CardContent
@@ -44,7 +49,11 @@ const InfoCard: React.FC<Properties> = ({
         <Typography>{description}</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" disabled={disabled}>
+        <Button
+          size="small"
+          onClick={() => navigate(navigateTo)}
+          disabled={disabled}
+        >
           See More {">"}
         </Button>
       </CardActions>

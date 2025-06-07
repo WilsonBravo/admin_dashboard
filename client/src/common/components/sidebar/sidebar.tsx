@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { type IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 import {
@@ -32,6 +33,8 @@ const SideBar: React.FC<Properties> = ({
   header,
   footer,
 }) => {
+  const navigate = useNavigate();
+
   const DrawerList = (
     <Box
       sx={{ width: 250 }}
@@ -39,9 +42,12 @@ const SideBar: React.FC<Properties> = ({
       onClick={() => toggleDrawer(false)}
     >
       <List>
-        {drawerList.map(({ label, icon, disabled }, index) => (
+        {drawerList.map(({ label, icon, disabled, navigateTo }, index) => (
           <ListItem key={index} disablePadding>
-            <ListItemButton disabled={disabled}>
+            <ListItemButton
+              onClick={() => navigate(navigateTo)}
+              disabled={disabled}
+            >
               <ListItemIcon>
                 <Icon icon={icon} />
               </ListItemIcon>
