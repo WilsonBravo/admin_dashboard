@@ -15,6 +15,7 @@ export {
   Card,
   CardContent,
   CardActions,
+  Switch,
 } from "./mui-material/mui-material";
 export {
   Icon,

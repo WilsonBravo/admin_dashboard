@@ -9,6 +9,7 @@ const GlobalStyles = () => (
         minHeight: "100vh",
         minWidth: "320px",
         flexDirection: "column",
+        fontFamily: "Inter, sans-serif",
       },
       "#root": {
         display: "flex",
