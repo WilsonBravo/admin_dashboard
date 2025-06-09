@@ -11,6 +11,11 @@ const components: ThemeOptions = {
   //   },
   // },
   components: {
+    MuiButton: {
+      styleOverrides: {
+        containedWarning: { backgroundColor: "#ffcc00" },
+      },
+    },
     MuiIconButton: {
       styleOverrides: {
         root: {

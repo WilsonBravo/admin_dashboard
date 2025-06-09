@@ -15,5 +15,6 @@ export {
   faTags,
   faComment,
   faImage,
+  faSearch,
 } from "@fortawesome/free-solid-svg-icons";
 export { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
