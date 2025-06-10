@@ -21,7 +21,17 @@ export {
   Link,
 } from "@mui/material";
 
-export { Switch, TextField, Checkbox, FormControlLabel } from "@mui/material";
+export {
+  Switch,
+  TextField,
+  Checkbox,
+  FormControlLabel,
+  FormControl,
+  InputLabel,
+  Input,
+  FormHelperText,
+  MenuItem,
+} from "@mui/material";
 
 export {
   Table,

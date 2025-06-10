@@ -18,5 +18,7 @@ export {
   faSearch,
   faLock,
   faLockOpen,
+  faEye,
+  faEyeSlash,
 } from "@fortawesome/free-solid-svg-icons";
 export { faGithub, faLinkedin } from "@fortawesome/free-brands-svg-icons";
