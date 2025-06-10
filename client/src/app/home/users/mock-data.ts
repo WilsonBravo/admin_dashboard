@@ -38,6 +38,12 @@ export const headCellUsers: HeadCell<User>[] = [
     disablePadding: false,
     label: "Organization",
   },
+  {
+    id: "locked",
+    numeric: false,
+    disablePadding: false,
+    label: "Locked",
+  },
 ];
 
 export const users: User[] = [
@@ -49,6 +55,7 @@ export const users: User[] = [
     lastName: "Anderson",
     role: "ADMIN",
     organization: "TechNova Inc.",
+    locked: false,
   },
   {
     id: "9a9b5d5e-1f47-42d5-a303-0b3087c43c7b",
@@ -57,7 +64,8 @@ export const users: User[] = [
     name: "Bob",
     lastName: "Baker",
     role: "STAFF",
-    organization: "GreenLeaf Corp.",
+    organization: null,
+    locked: true,
   },
   {
     id: "8d23e3e2-5df2-4ea4-a849-d08312e8e66e",
@@ -67,6 +75,7 @@ export const users: User[] = [
     lastName: "Castillo",
     role: "COSTUMER",
     organization: "SmartHome Co.",
+    locked: false,
   },
   {
     id: "d6b6a40b-54b6-4fa7-b3d2-ec1f4a9a1e7c",
@@ -76,6 +85,7 @@ export const users: User[] = [
     lastName: "Soto",
     role: "STAFF",
     organization: "GreenLeaf Corp.",
+    locked: false,
   },
   {
     id: "cc1c478f-b2ee-4cbf-8b15-cb2d58a4b7b9",
@@ -84,7 +94,8 @@ export const users: User[] = [
     name: "Emily",
     lastName: "Evans",
     role: "ADMIN",
-    organization: "TechNova Inc.",
+    organization: null,
+    locked: true,
   },
   {
     id: "a8b4ce44-b601-4c11-b77d-00b7f3fa4ef2",
@@ -94,6 +105,7 @@ export const users: User[] = [
     lastName: "Fernandez",
     role: "COSTUMER",
     organization: "SmartHome Co.",
+    locked: false,
   },
   {
     id: "0dbce1ed-e1c2-4f90-94b0-12c98923b9b2",
@@ -102,7 +114,8 @@ export const users: User[] = [
     name: "Gina",
     lastName: "Gomez",
     role: "STAFF",
-    organization: "BlueOcean Solutions",
+    organization: null,
+    locked: false,
   },
   {
     id: "c3e66ff9-5cd1-434f-b842-f2e9dece9b01",
@@ -112,6 +125,7 @@ export const users: User[] = [
     lastName: "Hernandez",
     role: "COSTUMER",
     organization: "NextGen Retail",
+    locked: true,
   },
   {
     id: "27b8cb19-3c60-4f9d-896d-9f98b7b0c4ab",
@@ -121,6 +135,7 @@ export const users: User[] = [
     lastName: "Ibarra",
     role: "ADMIN",
     organization: "TechNova Inc.",
+    locked: false,
   },
   {
     id: "3dc68e2d-50ab-4c55-b361-d67e85c6608d",
@@ -130,5 +145,27 @@ export const users: User[] = [
     lastName: "Jimenez",
     role: "STAFF",
     organization: "BlueOcean Solutions",
+    locked: true,
+  },
+
+  {
+    id: "e1c69c2e-8b42-4a5d-aaf9-fbca3fa91e8d",
+    email: "lucas.guest@example.com",
+    username: "lucas_g",
+    name: "Lucas",
+    lastName: "Gonzalez",
+    role: "COSTUMER",
+    organization: null,
+    locked: false,
+  },
+  {
+    id: "72b5b3c0-61d0-4e39-a835-d3550e5fe171",
+    email: "marie.locked@example.com",
+    username: "marie_l",
+    name: "Marie",
+    lastName: "Lopez",
+    role: "STAFF",
+    organization: "NextGen Retail",
+    locked: true,
   },
 ];

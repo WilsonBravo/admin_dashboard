@@ -1,17 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Box, Button } from "@/common/components/components";
+import { Box, Button, Modal } from "@/common/components/components";
 
-const Selected: React.FC = () => {
+type Properties = {
+  selectedRows: string[];
+};
+
+const Selected: React.FC<Properties> = ({ selectedRows }) => {
+  const [open, setOpen] = useState(false);
   return (
-    <Box display="flex" gap={2}>
-      <Button color="warning" variant="contained">
-        Lock
-      </Button>
-      <Button color="error" variant="contained">
-        Delete
-      </Button>
-    </Box>
+    <>
+      <Box display="flex" gap={2}>
+        <Button
+          color="warning"
+          variant="contained"
+          onClick={() => setOpen(true)}
+        >
+          Lock
+        </Button>
+        <Button color="error" variant="contained">
+          Delete
+        </Button>
+      </Box>
+      <Modal open={open} onClose={() => setOpen(false)}>
+        <Box>{JSON.stringify(selectedRows)}</Box>
+      </Modal>
+    </>
   );
 };
 

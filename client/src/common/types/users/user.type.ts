@@ -8,5 +8,6 @@ export type User = {
   name: string;
   lastName: string;
   role: ValueOf<typeof UserRole>;
-  organization: string;
+  organization: string | null;
+  locked: boolean;
 };

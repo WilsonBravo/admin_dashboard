@@ -40,6 +40,8 @@ export {
   faComment,
   faImage,
   faSearch,
+  faLock,
+  faLockOpen,
 } from "./icon/icon";
 
 export { RouterProvider } from "./router-provider/router-provider";

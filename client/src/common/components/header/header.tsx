@@ -6,7 +6,7 @@ type Properties = {
   start?: React.ReactNode;
   middle?: React.ReactNode;
   end?: React.ReactNode;
-  shadow: boolean;
+  shadow?: boolean;
 };
 
 const Header: React.FC<Properties> = ({

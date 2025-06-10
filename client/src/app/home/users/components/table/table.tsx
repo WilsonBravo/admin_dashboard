@@ -1,6 +1,12 @@
 import React, { useState } from "react";
 
-import { Table as TableLib, Modal } from "@/common/components/components";
+import {
+  Table as TableLib,
+  Modal,
+  Icon,
+  faLock,
+  faLockOpen,
+} from "@/common/components/components";
 import { type User, type ValueOf } from "@/common/types/types";
 import { UserRole } from "@/common/enums/enums";
 
@@ -25,6 +31,7 @@ const Table: React.FC<Properties> = ({
 }) => {
   const [openModal, setOpenModal] = useState(false);
   const [user, setUser] = useState<User | undefined>(undefined);
+  const [selectedRows, setSelectedRows] = useState<string[]>([]);
 
   return (
     <>
@@ -39,12 +46,15 @@ const Table: React.FC<Properties> = ({
               filterByRole={filterByRole}
             />
           ),
-          selected: <Selected />,
+          selected: <Selected selectedRows={selectedRows} />,
         }}
         onClickRow={(id: string) => {
           setUser(filteredData.find((user) => user.id === id));
           setOpenModal(true);
         }}
+        onSelected={(rows) => setSelectedRows(rows)}
+        iconForTrue={<Icon icon={faLock} />}
+        iconForFalse={<Icon icon={faLockOpen} />}
       />
       <Modal open={openModal} onClose={() => setOpenModal(false)}>
         <UserInfoModal user={user} />

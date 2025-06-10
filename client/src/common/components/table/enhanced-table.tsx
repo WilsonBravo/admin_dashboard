@@ -14,7 +14,7 @@ import {
 } from "../mui-material/mui-material";
 
 import { type HeadCell, type Order } from "./types/types";
-import { getComparator } from "./helpers/helpers";
+import { getCellValue, getComparator } from "./helpers/helpers";
 import { EnhancedTableToolbar } from "./table-toolbar";
 import { EnhancedTableHead } from "./table-head";
 
@@ -28,6 +28,10 @@ type Properties<T> = {
     selected?: React.ReactNode;
   };
   onClickRow?: (id: string) => void;
+  onSelected?: (selectedRows: string[]) => void;
+  maxCellChar?: number;
+  iconForTrue?: React.ReactNode | null;
+  iconForFalse?: React.ReactNode | null;
 };
 
 export const EnhancedTable = <T extends { id: string }>({
@@ -40,6 +44,10 @@ export const EnhancedTable = <T extends { id: string }>({
     selected: null,
   },
   onClickRow = () => {},
+  onSelected = () => {},
+  maxCellChar = 10,
+  iconForTrue = null,
+  iconForFalse = null,
 }: Properties<T>) => {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof T>(defaultSortKey);
@@ -61,6 +69,7 @@ export const EnhancedTable = <T extends { id: string }>({
     if (event.target.checked) {
       const newSelected = rows.map((n) => n.id);
       setSelected(newSelected);
+      onSelected([...newSelected]);
       return;
     }
     setSelected([]);
@@ -83,6 +92,7 @@ export const EnhancedTable = <T extends { id: string }>({
       );
     }
     setSelected(newSelected);
+    onSelected([...newSelected]);
   };
 
   const handleChangePage = (_: unknown, newPage: number) => {
@@ -163,17 +173,26 @@ export const EnhancedTable = <T extends { id: string }>({
                     {keys
                       .filter((key) => key !== "id")
                       .map((key, index) => {
-                        const rowValue = row[key as keyof T] as string | number;
+                        const cellValue = getCellValue({
+                          value: row[key as keyof T] as
+                            | string
+                            | number
+                            | boolean
+                            | null,
+                          maxCellChar,
+                          iconForTrue,
+                          iconForFalse,
+                        });
 
                         return (
                           <TableCell
                             key={index}
                             align={
-                              typeof rowValue === "number" ? "right" : "left"
+                              typeof cellValue === "number" ? "right" : "left"
                             }
                             padding={index == 0 ? "none" : "normal"}
                           >
-                            {row[key as keyof T] as string | number}
+                            {cellValue}
                           </TableCell>
                         );
                       })}
