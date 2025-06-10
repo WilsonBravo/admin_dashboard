@@ -1,78 +1,75 @@
-import {
-  Box,
-  Button,
-  faSearch,
-  Header,
-  Icon,
-  TextField,
-  Typography,
-  Table,
-} from "@/common/components/components";
-import React from "react";
-import { headCellUsers, users } from "./mock-data";
-// import EnhancedTable from "./components/table";
+import React, { useEffect, useState } from "react";
+import Fuse from "fuse.js";
+
+import { Box } from "@/common/components/components";
+import { type User, type ValueOf } from "@/common/types/types";
+import { UserRole } from "@/common/enums/enums";
+
+import { SearchBar } from "./components/search-bar";
+import { Header } from "./components/header";
+import { Table } from "./components/table/table";
+import { users } from "./mock-data";
 
 const Users: React.FC = () => {
+  const [rawData, setRawData] = useState<User[]>([]);
+  const [filteredData, setFilteredData] = useState<User[]>([]);
+  const [filter, setFilter] = useState<{
+    search: string;
+    filteredRole: ValueOf<typeof UserRole> | "";
+  }>({
+    search: "",
+    filteredRole: "",
+  });
+
+  const fuse = new Fuse(users, {
+    keys: ["username", "name", "email", "lastName"],
+    threshold: 0.3,
+  });
+
+  const filterByRole = (role: ValueOf<typeof UserRole> | "") => {
+    setFilter((prev) => ({ ...prev, filteredRole: role }));
+  };
+
+  const handleSearchTermChange = (value: string) => {
+    setFilter((prev) => ({
+      ...prev,
+      search: value,
+    }));
+  };
+
+  useEffect(() => {
+    setRawData(users);
+  }, []);
+
+  useEffect(() => {
+    if (filter.search == "" && filter.filteredRole == "") {
+      setFilteredData(rawData);
+      return;
+    }
+
+    let data: User[] = [];
+
+    if (filter.filteredRole != "")
+      data = rawData.filter((user) => user.role == filter.filteredRole);
+
+    if (filter.search != "")
+      data = fuse.search(filter.search).map((r) => r.item);
+
+    setFilteredData(data);
+  }, [filter, rawData]);
+
   return (
     <Box sx={{ p: "20px 0" }}>
-      <Header
-        start={<Typography variant="h5">Users Management</Typography>}
-        end={
-          <Box>
-            <Button variant="contained" color="success">
-              New User
-            </Button>
-          </Box>
-        }
-        shadow={false}
-      />
+      <Header />
 
       <Box sx={{ p: "0 80px" }}>
-        <TextField
-          slotProps={{
-            input: {
-              startAdornment: (
-                <Box sx={{ mr: 2 }}>
-                  <Icon icon={faSearch} />
-                </Box>
-              ),
-            },
-          }}
-          placeholder="Search for users"
-          fullWidth
-        />
+        <Box>
+          <SearchBar handleSearchTermChange={handleSearchTermChange} />
+        </Box>
         <Table
-          rows={users}
-          headCells={headCellUsers}
-          defaultSortKey="username"
-          headerActions={{
-            start: (
-              <Box display="flex" alignItems="center" gap={2}>
-                <Typography variant="h6">Role:</Typography>
-                <Box>
-                  <Button variant="contained" sx={{ borderRadius: 0 }} disabled>
-                    admin
-                  </Button>
-                  <Button variant="outlined" sx={{ borderRadius: 0 }}>
-                    staff
-                  </Button>
-                  <Button variant="outlined" sx={{ borderRadius: 0 }}>
-                    client
-                  </Button>
-                </Box>
-              </Box>
-            ),
-            selected: (
-              <Box display="flex" gap={2}>
-                <Button color="warning" variant="contained">
-                  Lock
-                </Button>
-                <Button color="error" variant="contained">
-                  Delete
-                </Button>
-              </Box>
-            ),
-          }}
+          filteredData={filteredData}
+          filter={filter}
+          filterByRole={filterByRole}
         />
       </Box>
     </Box>

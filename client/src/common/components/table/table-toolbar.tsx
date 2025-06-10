@@ -5,6 +5,7 @@ import {
   Toolbar,
   Typography,
   Tooltip,
+  Box,
 } from "../mui-material/mui-material";
 
 type Properties = {
@@ -50,15 +51,15 @@ export const EnhancedTableToolbar: React.FC<Properties> = ({
           {numSelected} selected
         </Typography>
       ) : (
-        <>{headerActions.start}</>
+        <Box>{headerActions.start}</Box>
       )}
       {numSelected > 0 ? (
         <Tooltip title="Delete">
-          <>{headerActions.selected}</>
+          <Box>{headerActions.selected}</Box>
         </Tooltip>
       ) : (
         <Tooltip title="Filter list">
-          <>{headerActions.end}</>
+          <Box>{headerActions.end}</Box>
         </Tooltip>
       )}
     </Toolbar>
