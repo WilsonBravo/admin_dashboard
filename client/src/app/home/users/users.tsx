@@ -49,11 +49,15 @@ const Users: React.FC = () => {
 
     let data: User[] = [];
 
-    if (filter.filteredRole != "")
-      data = rawData.filter((user) => user.role == filter.filteredRole);
-
     if (filter.search != "")
       data = fuse.search(filter.search).map((r) => r.item);
+
+    if (filter.filteredRole != "")
+      if (data.length > 0) {
+        data = data.filter((user) => user.role == filter.filteredRole);
+      } else {
+        data = rawData.filter((user) => user.role == filter.filteredRole);
+      }
 
     setFilteredData(data);
   }, [filter, rawData]);
