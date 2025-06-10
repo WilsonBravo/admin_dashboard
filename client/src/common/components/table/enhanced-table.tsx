@@ -27,6 +27,7 @@ type Properties<T> = {
     end?: React.ReactNode;
     selected?: React.ReactNode;
   };
+  onClickRow?: (id: string) => void;
 };
 
 export const EnhancedTable = <T extends { id: string }>({
@@ -38,6 +39,7 @@ export const EnhancedTable = <T extends { id: string }>({
     end: null,
     selected: null,
   },
+  onClickRow = () => {},
 }: Properties<T>) => {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof T>(defaultSortKey);
@@ -133,16 +135,15 @@ export const EnhancedTable = <T extends { id: string }>({
               headCells={headCells}
             />
             <TableBody>
-              {visibleRows.map((row, index) => {
+              {visibleRows.map((row) => {
                 const isItemSelected = selected.includes(row.id);
-                const labelId = `enhanced-table-checkbox-${index}`;
                 const keys = Object.keys(row) as (keyof T)[];
 
                 return (
                   <TableRow
                     hover
-                    onClick={(event) => handleClick(event, row.id)}
-                    role="checkbox"
+                    onClick={() => onClickRow(row.id)}
+                    role="row"
                     aria-checked={isItemSelected}
                     tabIndex={-1}
                     key={row.id}
@@ -153,8 +154,9 @@ export const EnhancedTable = <T extends { id: string }>({
                       <Checkbox
                         color="primary"
                         checked={isItemSelected}
-                        inputProps={{
-                          "aria-labelledby": labelId,
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          handleClick(event, row.id);
                         }}
                       />
                     </TableCell>

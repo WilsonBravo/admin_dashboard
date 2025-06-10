@@ -17,6 +17,8 @@ export {
   IconButton,
   Paper,
   Typography,
+  Modal,
+  Link,
 } from "@mui/material";
 
 export { Switch, TextField, Checkbox, FormControlLabel } from "@mui/material";

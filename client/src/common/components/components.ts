@@ -17,6 +17,8 @@ export {
   CardActions,
   Switch,
   TextField,
+  Modal,
+  Link,
 } from "./mui-material/mui-material";
 export {
   Icon,
