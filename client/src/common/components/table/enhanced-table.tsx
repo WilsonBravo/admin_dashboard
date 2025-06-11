@@ -11,10 +11,11 @@ import {
   Checkbox,
   FormControlLabel,
   Switch,
+  Typography,
 } from "../mui-material/mui-material";
 
-import { type HeadCell, type Order } from "./types/types";
-import { getCellValue, getComparator } from "./helpers/helpers";
+import { type HeadCell, type Options, type Order } from "./types/types";
+import { getCellColor, getCellValue, getComparator } from "./helpers/helpers";
 import { EnhancedTableToolbar } from "./table-toolbar";
 import { EnhancedTableHead } from "./table-head";
 
@@ -32,6 +33,7 @@ type Properties<T> = {
   maxCellChar?: number;
   iconForTrue?: React.ReactNode | null;
   iconForFalse?: React.ReactNode | null;
+  options?: Options;
 };
 
 export const EnhancedTable = <T extends { id: string }>({
@@ -48,6 +50,14 @@ export const EnhancedTable = <T extends { id: string }>({
   maxCellChar = 10,
   iconForTrue = null,
   iconForFalse = null,
+  options = {
+    colors: {
+      boolean: {
+        true: "info",
+        false: "gray",
+      },
+    },
+  },
 }: Properties<T>) => {
   const [order, setOrder] = React.useState<Order>("asc");
   const [orderBy, setOrderBy] = React.useState<keyof T>(defaultSortKey);
@@ -173,7 +183,7 @@ export const EnhancedTable = <T extends { id: string }>({
                     {keys
                       .filter((key) => key !== "id")
                       .map((key, index) => {
-                        const cellValue = getCellValue({
+                        const { cellValue, type } = getCellValue({
                           value: row[key as keyof T] as
                             | string
                             | number
@@ -192,7 +202,15 @@ export const EnhancedTable = <T extends { id: string }>({
                             }
                             padding={index == 0 ? "none" : "normal"}
                           >
-                            {cellValue}
+                            <Typography
+                              color={getCellColor({
+                                options,
+                                type,
+                                cellValue,
+                              })}
+                            >
+                              {cellValue}
+                            </Typography>
                           </TableCell>
                         );
                       })}

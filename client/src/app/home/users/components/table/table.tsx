@@ -55,6 +55,19 @@ const Table: React.FC<Properties> = ({
         onSelected={(rows) => setSelectedRows(rows)}
         iconForTrue={<Icon icon={faLock} />}
         iconForFalse={<Icon icon={faLockOpen} />}
+        options={{
+          colors: {
+            boolean: {
+              true: "warning",
+              false: "gray",
+            },
+            string: [
+              { value: "ADMIN", color: "success" },
+              { value: "STAFF", color: "info" },
+              { value: "COSTUMER", color: "hotpink" },
+            ],
+          },
+        }}
       />
       <Modal open={openModal} onClose={() => setOpenModal(false)}>
         <UserInfoModal user={user} />
