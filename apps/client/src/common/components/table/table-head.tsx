@@ -1,4 +1,5 @@
 import { visuallyHidden } from "@mui/utils";
+import type { SxProps } from "@mui/material";
 
 import { type HeadCell, type Order } from "./types/types";
 import {
@@ -59,7 +60,7 @@ export const EnhancedTableHead = <T,>({
             >
               {headCell.label}
               {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
+                <Box component="span" sx={visuallyHidden as SxProps}>
                   {order === "desc" ? "sorted descending" : "sorted ascending"}
                 </Box>
               ) : null}
