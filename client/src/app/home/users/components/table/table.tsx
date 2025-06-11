@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   Table as TableLib,
@@ -14,6 +14,8 @@ import { HeaderStart } from "./header-start";
 import { Selected } from "./selected";
 import { headCellUsers } from "../../mock-data";
 import { UserInfoModal } from "./user-info-modal";
+import { useAppDispatch } from "@/common/hooks/hooks";
+import { signInAction } from "@/modules/store/auth/auth-actions";
 
 type Properties = {
   filteredData: User[];
@@ -32,6 +34,12 @@ const Table: React.FC<Properties> = ({
   const [openModal, setOpenModal] = useState(false);
   const [user, setUser] = useState<User | undefined>(undefined);
   const [selectedRows, setSelectedRows] = useState<string[]>([]);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(signInAction({ email: "", password: "" }));
+  }, []);
 
   return (
     <>
