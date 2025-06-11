@@ -7,7 +7,7 @@ import { DbService } from "../database/db.service";
 @Injectable()
 class UserService {
   constructor(private dbService: DbService) {}
-  async find(): Promise<User[]> {
+  async find(): Promise<Omit<User, "password">[]> {
     const users = await this.dbService.user.findMany({
       select: {
         id: true,
