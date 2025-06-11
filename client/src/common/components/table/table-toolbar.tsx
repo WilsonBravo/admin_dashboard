@@ -1,12 +1,7 @@
 import React from "react";
 import { alpha } from "@mui/material";
 
-import {
-  Toolbar,
-  Typography,
-  Tooltip,
-  Box,
-} from "../mui-material/mui-material";
+import { Toolbar, Typography, Box } from "../mui-material/mui-material";
 
 type Properties = {
   numSelected: number;
@@ -54,13 +49,9 @@ export const EnhancedTableToolbar: React.FC<Properties> = ({
         <Box>{headerActions.start}</Box>
       )}
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <Box>{headerActions.selected}</Box>
-        </Tooltip>
+        <Box>{headerActions.selected}</Box>
       ) : (
-        <Tooltip title="Filter list">
-          <Box>{headerActions.end}</Box>
-        </Tooltip>
+        <Box>{headerActions.end}</Box>
       )}
     </Toolbar>
   );
