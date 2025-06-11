@@ -56,6 +56,7 @@ export const EnhancedTable = <T extends { id: string }>({
         true: "info",
         false: "gray",
       },
+      null: "gray",
     },
   },
 }: Properties<T>) => {

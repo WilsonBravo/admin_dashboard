@@ -8,18 +8,17 @@ export type Options = {
       value: string;
       color: string;
     }[];
-    number?: [
-      {
-        normal: string;
-        less: {
-          value: string;
-          color: string;
-        };
-        more: {
-          value: string;
-          color: string;
-        };
-      },
-    ];
+    number?: {
+      normal: string;
+      less: {
+        value: string;
+        color: string;
+      };
+      more: {
+        value: string;
+        color: string;
+      };
+    };
+    null: string;
   };
 };

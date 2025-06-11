@@ -19,7 +19,10 @@ export const getCellValue = ({
   let cellValue: string | number | React.ReactNode = "";
   let type: Cell = "string";
 
-  if (value == null) cellValue = "N/A";
+  if (value == null) {
+    cellValue = "N/A";
+    type = "null";
+  }
 
   if (typeof value == "string") {
     const rowValue = value as string;

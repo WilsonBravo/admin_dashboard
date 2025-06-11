@@ -66,6 +66,7 @@ const Table: React.FC<Properties> = ({
               { value: "STAFF", color: "info" },
               { value: "COSTUMER", color: "hotpink" },
             ],
+            null: "gray",
           },
         }}
       />

@@ -21,6 +21,7 @@ export const getCellColor = ({
 
       return color?.color ?? "text.primary";
     }
+    if (type == "null") return options.colors.null;
   }
   return "text.primary";
 };
