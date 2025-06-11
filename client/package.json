@@ -12,19 +12,29 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@fastify/static": "6.0.0",
     "@fontsource/inter": "^5.2.5",
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/free-regular-svg-icons": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
+    "@hookform/resolvers": "^5.1.1",
     "@mui/material": "^7.1.1",
-    "@nestjs/serve-static": "^5.0.3",
+    "@nestjs/cli": "10.1.18",
+    "@nestjs/platform-fastify": "10.4.19",
+    "@nestjs/serve-static": "^3.0.0",
+    "@swc/cli": "0.1.63",
+    "@typescript-eslint/parser": "6.15.0",
+    "@vitest/coverage-istanbul": "1.6.1",
     "fuse.js": "^7.1.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-hook-form": "^7.57.0",
     "react-router-dom": "^7.6.2",
-    "server": "^0.0.3"
+    "rimraf": "4.1.4",
+    "server": "^0.0.3",
+    "zod": "^3.25.58"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
@@ -36,7 +46,7 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^16.0.0",
     "typescript": "~5.8.3",
-    "typescript-eslint": "^8.30.1",
+    "typescript-eslint": "^7.3.1",
     "vite": "^6.3.5"
   }
 }
