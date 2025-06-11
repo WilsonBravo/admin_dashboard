@@ -9,13 +9,13 @@ import {
 } from "@/common/components/components";
 import { type User, type ValueOf } from "@/common/types/types";
 import { UserRole } from "@/common/enums/enums";
+import { useAppDispatch } from "@/common/hooks/hooks";
+import { getUsersAction } from "@/modules/store/user/user-actions";
 
 import { HeaderStart } from "./header-start";
 import { Selected } from "./selected";
-import { headCellUsers } from "../../mock-data";
+import { headCellUsers } from "../../head-cell";
 import { UserInfoModal } from "./user-info-modal";
-import { useAppDispatch } from "@/common/hooks/hooks";
-import { getUsersAction } from "@/modules/store/user/user-actions";
 
 type Properties = {
   filteredData: User[];

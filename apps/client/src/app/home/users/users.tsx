@@ -2,16 +2,19 @@ import React, { useEffect, useState } from "react";
 import Fuse from "fuse.js";
 
 import { Box } from "@/common/components/components";
-import { type User, type ValueOf } from "@/common/types/types";
+import { type RootState, type User, type ValueOf } from "@/common/types/types";
 import { UserRole } from "@/common/enums/enums";
+import { useAppDispatch, useAppSelector } from "@/common/hooks/hooks";
+import { getUsersAction } from "@/modules/store/user/user-actions";
 
 import { SearchBar } from "./components/search-bar";
 import { Header } from "./components/header";
 import { Table } from "./components/table/table";
-import { users } from "./mock-data";
 
 const Users: React.FC = () => {
-  const [rawData, setRawData] = useState<User[]>([]);
+  const dispatch = useAppDispatch();
+  const users = useAppSelector((state: RootState) => state.user.users);
+
   const [filteredData, setFilteredData] = useState<User[]>([]);
   const [filter, setFilter] = useState<{
     search: string;
@@ -38,12 +41,12 @@ const Users: React.FC = () => {
   };
 
   useEffect(() => {
-    setRawData(users);
+    dispatch(getUsersAction());
   }, []);
 
   useEffect(() => {
     if (filter.search == "" && filter.filteredRole == "") {
-      setFilteredData(rawData);
+      setFilteredData(users);
       return;
     }
 
@@ -56,11 +59,11 @@ const Users: React.FC = () => {
       if (data.length > 0) {
         data = data.filter((user) => user.role == filter.filteredRole);
       } else {
-        data = rawData.filter((user) => user.role == filter.filteredRole);
+        data = users.filter((user) => user.role == filter.filteredRole);
       }
 
     setFilteredData(data);
-  }, [filter, rawData]);
+  }, [filter, users]);
 
   return (
     <Box sx={{ p: "20px 0" }}>
