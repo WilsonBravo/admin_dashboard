@@ -1,7 +1,7 @@
-import { UserRole } from "@/common/enums/enums";
-import { type ValueOf } from "../value-of.type";
+import { UserRole } from "@/modules/user/enums/enums.js";
+import { type ValueOf } from "@/common/types/types.js";
 
-export type User = {
+export type UserProfile = {
   id: string;
   email: string;
   username: string;
@@ -9,5 +9,4 @@ export type User = {
   lastName: string;
   role: ValueOf<typeof UserRole>;
   organization: string | null;
-  locked: boolean;
 };

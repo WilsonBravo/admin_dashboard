@@ -1,7 +1,7 @@
 // import { Navigate } from "react-router-dom";
 import type { RouteObject } from "react-router-dom";
 
-import { AppRoute } from "@/common/enums/app-route.enum";
+import { AppRoute } from "@/common/enums/enums";
 import { Admin } from "@/app/admin/admin";
 import { Home } from "@/app/home/home";
 import { RootLayout } from "@/app/home/layout";
