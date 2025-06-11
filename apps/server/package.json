@@ -19,9 +19,11 @@
     "lint": "eslint --ignore-path .gitignore . --ext .js,.mjs,cjs,.ts,.mts",
     "lint:fix": "eslint --ignore-path .gitignore . --ext .js,.mjs,cjs,.ts,.mts --fix",
     "lint:file": "eslint --ignore-path .gitignore",
-    "postinstall": "npx prisma generate && npx prisma migrate deploy"
+    "postinstall": "npx prisma generate && npx prisma migrate deploy",
+    "prisma:seed-users": "tsx prisma/seeds/users/users.seed.ts"
   },
   "dependencies": {
+    "@admin-dashboard/shared": "*",
     "@fastify/static": "^8.2.0",
     "@nestjs/cli": "^11.0.7",
     "@nestjs/common": "^11.1.3",
@@ -31,11 +33,11 @@
     "@nestjs/serve-static": "^5.0.3",
     "@nestjs/swagger": "^11.2.0",
     "@prisma/client": "^6.9.0",
+    "bcrypt": "6.0.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "server": "^1.0.41",
-    "typescript-eslint": "8.34.0",
-    "@admin-dashboard/shared": "*"
+    "typescript-eslint": "8.34.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",
@@ -44,6 +46,7 @@
     "@nestjs/schematics": "^11.0.5",
     "@nestjs/testing": "^11.1.3",
     "@swc/core": "^1.12.0",
+    "@types/bcrypt": "5.0.2",
     "@types/fs-extra": "^11.0.4",
     "@types/node": "^24.0.0",
     "concurrently": "^9.1.2",
