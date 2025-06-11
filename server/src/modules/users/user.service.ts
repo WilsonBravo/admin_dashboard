@@ -2,7 +2,7 @@ import { Injectable } from "@nestjs/common";
 
 @Injectable()
 class UserService {
-  async findByEmail(email: string) {
+  async find(email: string) {
     return {
       id: "1231-2143-1255125",
       username: "John.812",

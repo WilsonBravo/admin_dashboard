@@ -18,7 +18,8 @@
     "dev": "nest start --watch --debug=0.0.0.0:9229",
     "lint": "eslint --ignore-path .gitignore . --ext .js,.mjs,cjs,.ts,.mts",
     "lint:fix": "eslint --ignore-path .gitignore . --ext .js,.mjs,cjs,.ts,.mts --fix",
-    "lint:file": "eslint --ignore-path .gitignore"
+    "lint:file": "eslint --ignore-path .gitignore",
+    "postinstall": "npx prisma generate && npx prisma migrate deploy"
   },
   "dependencies": {
     "@fastify/static": "^8.2.0",
@@ -28,6 +29,8 @@
     "@nestjs/core": "^11.1.3",
     "@nestjs/platform-fastify": "^11.1.3",
     "@nestjs/serve-static": "^5.0.3",
+    "@nestjs/swagger": "^11.2.0",
+    "@prisma/client": "^6.9.0",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "server": "^1.0.41",
@@ -44,6 +47,7 @@
     "@types/node": "^24.0.0",
     "concurrently": "^9.1.2",
     "fs-extra": "^11.3.0",
+    "prisma": "^6.9.0",
     "source-map-support": "^0.5.21",
     "ts-loader": "^9.5.2",
     "unplugin-swc": "^1.5.4"

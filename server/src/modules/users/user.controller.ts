@@ -7,8 +7,8 @@ export class UserController {
   constructor(private userService: UserService) {}
 
   @Get("")
-  async findByEmail() {
-    const user = await this.userService.findByEmail("");
+  async find() {
+    const user = await this.userService.find("");
     return user;
   }
 }

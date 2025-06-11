@@ -5,6 +5,7 @@ import {
   FastifyAdapter,
   NestFastifyApplication,
 } from "@nestjs/platform-fastify";
+import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
 
 import { AppModule } from "./app.module";
 
@@ -14,9 +15,41 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
-  app.setGlobalPrefix("api");
+  app.setGlobalPrefix("api/v1");
   const configService = app.get(ConfigService);
-  const port = configService.get<string>("PORT", "3000");
+  const port = configService.get<string>("PORT", "4200");
+  const node_env = configService.get<string>("NODE_ENV", "PRODUCTION");
+
+  if (node_env !== "PRODUCTION") {
+    const config = new DocumentBuilder()
+      .setTitle("LifeSwap")
+      .setDescription("LifeSwap API")
+      .setVersion("1.0")
+      .addBearerAuth(
+        {
+          type: "http",
+          scheme: "bearer",
+          bearerFormat: "JWT",
+          name: "Authorization",
+          in: "header",
+        },
+        "JWT-auth",
+      )
+      .build();
+
+    const document = SwaggerModule.createDocument(app, config);
+    SwaggerModule.setup("doc", app, document, {
+      customJs: [
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-bundle.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.js",
+      ],
+      customCssUrl: [
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.min.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui-standalone-preset.min.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.15.5/swagger-ui.css",
+      ],
+    });
+  }
 
   await app.listen(port, "0.0.0.0");
 
