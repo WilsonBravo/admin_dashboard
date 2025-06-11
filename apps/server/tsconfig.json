@@ -1,4 +1,8 @@
-{  "compilerOptions": {
+{
+  "extends": "../../tsconfig.json",
+  "include": ["**/*.ts", "**/*.js"],
+  "exclude": ["node_modules", "dist"],
+  "compilerOptions": {
     "baseUrl": ".",
     "module": "esnext",
     "target": "esnext",
@@ -14,12 +18,8 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "paths": {
-      "@/src/*": ["src/*"],
-      "@/common/*": ["src/common/*"],
-      "@/modules/*": ["src/modules/*"],
-      "@/database/*": ["src/database/*"]
+      "@/*": ["./src/*"]
     },
     "types": []
-  },
-  "exclude": ["node_modules", "dist"]
+  }
 }

@@ -1,8 +1,11 @@
 {
-  "name": "client",
+  "name": "@admin-dashboard/client",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": "23.11.x",
+    "npm": "10.9.x"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -29,7 +32,8 @@
     "react-router-dom": "^7.6.2",
     "react-toastify": "^11.0.5",
     "server": "^1.0.41",
-    "zod": "^3.25.58"
+    "zod": "^3.25.58",
+    "@admin-dashboard/shared": "*"
   },
   "devDependencies": {
     "@types/react": "^19.1.7",

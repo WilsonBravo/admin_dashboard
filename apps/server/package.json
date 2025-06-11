@@ -1,14 +1,14 @@
 {
-  "name": "admin_dashboard",
-  "version": "1.0.0",
+  "name": "@admin-dashboard/server",
+  "private": true,
   "type": "module",
   "keywords": [
     "typescript",
     "nestjs"
   ],
   "engines": {
-    "node": ">=22.x",
-    "pnpm": ">=9.x"
+    "node": "23.11.x",
+    "npm": "10.9.x"
   },
   "packageManager": "pnpm@10.12.1",
   "main": "dist/main.js",
@@ -34,7 +34,8 @@
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.2",
     "server": "^1.0.41",
-    "typescript-eslint": "8.34.0"
+    "typescript-eslint": "8.34.0",
+    "@admin-dashboard/shared": "*"
   },
   "devDependencies": {
     "@commitlint/cli": "^19.8.1",

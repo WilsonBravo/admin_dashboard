@@ -1,10 +1,32 @@
 {
-  "name": "admin_dashboard",
-  "version": "1.0.0",
+  "name": "admin-dashboard",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": "23.11.x",
+    "npm": "10.9.x"
+  },
   "workspaces": [
-    "client",
-    "server"
+    "apps/*",
+    "packages/*"
   ],
+  "scripts": {
+    "_prettier": "prettier \"**/*.{js,ts,tsx,json,md,css,html}\"",
+    "git:hook:precommit": "lint-staged --cwd .",
+    "git:hook:commit": "npx @commitlint/cli --edit",
+    "build:shared": "npm run build -w packages/shared",
+    "build:client": "npm run build -w apps/client",
+    "build:server": "npm run build -w apps/server",
+    "lint:editorconfig": "editorconfig-checker",
+    "lint:fs": "ls-lint",
+    "lint:type": "npx tsc --noEmit",
+    "lint:js": "npx eslint . --max-warnings=0 --no-warn-ignored",
+    "lint:format": "npm run _prettier -- --check",
+    "lint:trash": "knip",
+    "format": "npm run _prettier -- --write",
+    "lint": "concurrently \"npm:lint:*\" && npm run lint --workspaces",
+    "ci:prepare": "simple-git-hooks"
+  },
   "dependencies": {
     "@swc/cli": "^0.7.7"
   },
@@ -22,6 +44,7 @@
     "eslint-plugin-react-refresh": "^0.4.20",
     "@eslint/js": "^9.28.0",
     "prettier": "^3.5.3",
+    "tsc-alias": "1.8.10",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.34.0",
     "ts-node": "^10.9.2",

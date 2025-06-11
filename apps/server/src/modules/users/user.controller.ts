@@ -8,7 +8,7 @@ export class UserController {
 
   @Get("")
   async find() {
-    const user = await this.userService.find("");
+    const user = await this.userService.find();
     return user;
   }
 }

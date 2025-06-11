@@ -13,11 +13,8 @@
     },
     "baseUrl": "./",
     "paths": {
-      "@/src/*": ["src/*"],
-      "@/app/*": ["src/app/*"],
-      "@/contexts/*": ["src/contexts/*"],
-      "@/shared/*": ["src/contexts/shared/*"],
-      "@/tests/*": ["tests/*"]
+      "@/*": ["src/*"],
+      "@/shared/*": ["../packages/shared/*"]
     },
     "target": "esnext"
   },
