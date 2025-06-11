@@ -15,7 +15,7 @@ import { Selected } from "./selected";
 import { headCellUsers } from "../../mock-data";
 import { UserInfoModal } from "./user-info-modal";
 import { useAppDispatch } from "@/common/hooks/hooks";
-import { signInAction } from "@/modules/store/auth/auth-actions";
+import { getUsersAction } from "@/modules/store/user/user-actions";
 
 type Properties = {
   filteredData: User[];
@@ -38,7 +38,7 @@ const Table: React.FC<Properties> = ({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(signInAction({ email: "", password: "" }));
+    dispatch(getUsersAction());
   }, []);
 
   return (

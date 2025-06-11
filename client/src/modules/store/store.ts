@@ -1,11 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import { errorMiddleware } from "@/common/middlewares/middlewares";
+
 import { rootReducer } from "./root-reducer";
 import { authService } from "./auth/auth";
-import { errorMiddleware } from "@/common/middlewares/middlewares";
+import { userService } from "./user/user";
 
 const extraArgument = {
   authService,
+  userService,
 };
 
 const store = configureStore({
