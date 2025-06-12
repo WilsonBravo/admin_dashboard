@@ -17,6 +17,7 @@
     "build:shared": "npm run build -w packages/shared",
     "build:client": "npm run build -w apps/client",
     "build:server": "npm run build -w apps/server",
+    "start": "npm run start -w apps/server",
     "lint:editorconfig": "editorconfig-checker",
     "lint:fs": "ls-lint",
     "lint:type": "npx tsc --noEmit",

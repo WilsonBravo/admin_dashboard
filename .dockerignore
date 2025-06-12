@@ -1,8 +1,8 @@
-*
-!/package.json
-!/pnpm-lock.yaml
-!/tsconfig.prod.json
-!/tsconfig.json
-!/.swcrc
-!/nest-cli.json
-!/src
+# *
+# !/package.json
+# !/pnpm-lock.yaml
+# !/tsconfig.prod.json
+# !/tsconfig.json
+# !/.swcrc
+# !/nest-cli.json
+# !/src
