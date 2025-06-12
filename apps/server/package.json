@@ -14,6 +14,7 @@
   "main": "dist/main.js",
   "scripts": {
     "build": "node --run build:clean && nest build --path tsconfig.prod.json",
+    "build:clean": "rimraf dist; exit 0",
     "start": "node dist/main.js",
     "dev": "nest start --watch --debug=0.0.0.0:9229",
     "lint": "eslint --ignore-path .gitignore . --ext .js,.mjs,cjs,.ts,.mts",
