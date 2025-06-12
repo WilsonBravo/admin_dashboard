@@ -26,8 +26,7 @@
     "lint:trash": "knip",
     "format": "npm run _prettier -- --write",
     "lint": "concurrently \"npm:lint:*\" && npm run lint --workspaces",
-    "ci:prepare": "simple-git-hooks",
-    "postinstall": "npm i @nestjs/serve-static -w apps/server"
+    "ci:prepare": "simple-git-hooks"
   },
   "dependencies": {
     "@swc/cli": "^0.7.7"
