@@ -9,10 +9,10 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "postinstall": "npm run build",
     "lint:type": "npx tsc --noEmit",
     "lint:js": "npx eslint . --max-warnings=0 --no-warn-ignored",
     "lint": "concurrently \"npm:lint:*\"",
-    "build": "tsc && tsc-alias"
+    "build": "npm run build:clean && tsc && tsc-alias",
+    "build:clean": "rimraf dist; exit 0"
   }
 }
