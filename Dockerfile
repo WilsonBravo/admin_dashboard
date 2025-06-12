@@ -8,7 +8,7 @@ COPY . .
 
 RUN npm install
 
-RUN npm run build:shared && npm run build:client
+RUN npm run build:shared && npm run build:client && npm run build:server
 
 EXPOSE 4200
 
