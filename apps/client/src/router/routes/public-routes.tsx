@@ -2,7 +2,6 @@
 import type { RouteObject } from "react-router-dom";
 
 import { AppRoute } from "@/common/enums/enums";
-import { Admin } from "@/app/admin/admin";
 import { Home } from "@/app/home/home";
 import { RootLayout } from "@/app/home/layout";
 import { Users } from "@/app/home/users/users";
@@ -21,10 +20,6 @@ const publicRoutes: RouteObject[] = [
         element: <Users />,
       },
     ],
-  },
-  {
-    path: AppRoute.ADMIN,
-    element: <Admin />,
   },
   //   {
   //     path: AppRoute.ANY,

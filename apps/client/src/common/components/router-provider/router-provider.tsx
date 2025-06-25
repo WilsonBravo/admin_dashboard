@@ -9,7 +9,9 @@ type Properties = {
 };
 
 const RouterProvider: React.FC<Properties> = ({ routes }) => (
-  <LibraryRouterProvider router={createBrowserRouter(routes)} />
+  <LibraryRouterProvider router={createBrowserRouter(routes, {
+    basename: "/admin"
+  })} />
 );
 
 export { RouterProvider };

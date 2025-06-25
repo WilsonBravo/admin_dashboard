@@ -15,7 +15,7 @@ async function bootstrap() {
     new FastifyAdapter(),
   );
 
-  app.setGlobalPrefix("api/v1");
+  app.setGlobalPrefix("/admin/api/v1");
   const configService = app.get(ConfigService);
   const port = configService.get<string>("PORT", "4200");
   const node_env = configService.get<string>("NODE_ENV", "PRODUCTION");

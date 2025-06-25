@@ -14,6 +14,7 @@
     "_prettier": "prettier \"**/*.{js,ts,tsx,json,md,css,html}\"",
     "git:hook:precommit": "lint-staged --cwd .",
     "git:hook:commit": "npx @commitlint/cli --edit",
+    "build": "npm run build:shared && npm run build:client && npm run build:server",
     "build:shared": "npm run build -w packages/shared",
     "build:client": "npm run build -w apps/client",
     "build:server": "npm run build -w apps/server",
@@ -26,7 +27,8 @@
     "lint:trash": "knip",
     "format": "npm run _prettier -- --write",
     "lint": "concurrently \"npm:lint:*\" && npm run lint --workspaces",
-    "ci:prepare": "simple-git-hooks"
+    "ci:prepare": "simple-git-hooks",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "@swc/cli": "^0.7.7"

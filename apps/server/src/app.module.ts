@@ -15,6 +15,7 @@ const __dirname = dirname(__filename);
   imports: [
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, "..", "..", "client", "dist"),
+      serveRoot: "/admin"
     }),
     ConfigModule.forRoot({ isGlobal: true, cache: true }),
     UserModule,
@@ -22,4 +23,4 @@ const __dirname = dirname(__filename);
     DbModule,
   ],
 })
-export class AppModule {}
+export class AppModule { }
